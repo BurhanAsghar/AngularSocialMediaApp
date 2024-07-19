@@ -1,0 +1,14 @@
+<div class="modal">
+    <form class="p-3" (ngSubmit)="onAddPost()" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="image">Upload Image</label>
+        <input type="file" class="form-control-file" id="image" (change)="onFileSelected($event)" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add Post</button>
+        <button type="button" class="btn btn-secondary ml-2" (click)="close.emit()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  
+  
