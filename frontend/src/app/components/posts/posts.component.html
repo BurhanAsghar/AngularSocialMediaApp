@@ -1,0 +1,53 @@
+
+
+<div class="card mb-3">
+  <div class="card-body">
+    <img class="card-img-top" [src]="post.imageUrls[0]" alt="Post Image">
+    <h5 class="card-title">{{ post.user.username }}</h5>
+    <button *ngIf="isCurrentUser(post.user._id)" class="btn btn-sm btn-secondary" (click)="toggleOptions()">...</button>
+    <div *ngIf="showOptions">
+      <button class="btn btn-sm btn-primary" (click)="onEditPost()">Edit</button>
+      <button class="btn btn-sm btn-danger" (click)="onDeletePost()">Delete</button>
+    </div>
+    <div>
+      <button class="btn btn-sm btn-info" (click)="toggleComments()">Comments</button>
+      <div *ngIf="showComments">
+        <div *ngFor="let comment of post.comments" class="mt-2">
+          <strong>{{ comment.user.username }}</strong>
+          <p>{{ comment.content }}</p>
+        </div>
+        <form class="mt-2" (ngSubmit)="onAddComment()">
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="newComment" name="comment" required>
+          </div>
+          <button type="submit" class="btn btn-sm btn-success">Add Comment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div>
+  <img [src]="post.imageUrls[0]" alt="Post Image">
+  <button *ngIf="isCurrentUser(post.user._id)" (click)="toggleOptions()">...</button>
+  <div *ngIf="showOptions">
+    <button (click)="onEditPost()">Edit</button>
+    <button (click)="onDeletePost()">Delete</button>
+  </div>
+  <div>
+    <h3>{{ post.user.username }}</h3>
+    <p>{{ post.caption }}</p>
+    <button (click)="toggleComments()">Comments</button>
+    <div *ngIf="showComments">
+      <div *ngFor="let comment of post.comments">
+        <strong>{{ comment.user.username }}</strong>
+        <p>{{ comment.content }}</p>
+      </div>
+      <form (ngSubmit)="onAddComment()">
+        <input type="text" [(ngModel)]="newComment" name="comment" required>
+        <button type="submit">Add Comment</button>
+      </form>
+    </div>
+  </div>
+</div> -->

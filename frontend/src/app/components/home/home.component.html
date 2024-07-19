@@ -1,0 +1,22 @@
+<!-- <div class="homecontainer">
+    <nav class="navbar">
+        <div>
+            <p>logo</p>
+        </div>
+        <div class="navbtn">
+            <button id="logoutbtn">Logout</button>
+        </div>
+    </nav>
+</div> -->
+
+<app-navbar></app-navbar>
+<div class="container mt-4">
+  <button class="btn btn-primary mb-3" (click)="openAddPostModal()">Add Post</button>
+  <app-add-post *ngIf="showAddPostModal" (close)="closeAddPostModal()"></app-add-post>
+
+  <div *ngIf="posts">
+    <div *ngFor="let post of posts">
+      <app-posts [post]="post"></app-posts>
+    </div>
+  </div>
+</div>
